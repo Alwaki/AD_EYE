@@ -6,3 +6,8 @@ Write better readme
 Import ROS packages
 Write ROS package
 Setup test environment
+
+this is additional bullshit
+
+
+this is even further bullshit
