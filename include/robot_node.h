@@ -28,9 +28,12 @@ class RobotNode
         /*!
          * Parameters and/or variables.
         */
-        bool leader_flag;
-        geometry_msgs::Pose2D current_pose;
-        std::vector<geometry_msgs::Pose2D> waypoints;
+        double gain_kp_;
+        double gain_ki_;
+        double gain_kd_;
+        bool leader_flag_;
+        geometry_msgs::Pose2D current_pose_;
+        std::vector<geometry_msgs::Pose2D> waypoints_;
 
         /*!
          * Subscribers, publishers, services.
@@ -41,9 +44,11 @@ class RobotNode
         /*!
          * Method declarations.
         */
-        bool init(geometry_msgs::Pose2D initial_pose);
+        bool init_node_(geometry_msgs::Pose2D initial_pose);
 
-        void waypoint_callback(const geometry_msgs::Pose2D new_map);
+        void run_node_();
 
-        void publish_pose();
+        void waypoint_callback_(const geometry_msgs::Pose2D new_map);
+
+        void publish_pose_();
 }
