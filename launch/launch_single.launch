@@ -1,0 +1,5 @@
+<launch>
+  <group ns="vehicle_1">
+    <node name="robot_node" pkg="AD_EYE" type="robot_node" args="-foo arg2" />
+  </group>
+</launch>

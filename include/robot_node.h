@@ -1,7 +1,9 @@
-#pragma once
+#ifndef ROBOT_NODE_H
+#define ROBOT_NODE_H
 
-#include <geometry_msgs.h>
-#include <vector.h>
+#include "ros/ros.h"
+#include <geometry_msgs/Pose2D.h>
+#include <vector>
 
 /*!
 * Main class for object instantiation in ROS interface.
@@ -28,9 +30,6 @@ class RobotNode
         /*!
          * Parameters and/or variables.
         */
-        double gain_kp_;
-        double gain_ki_;
-        double gain_kd_;
         bool leader_flag_;
         geometry_msgs::Pose2D current_pose_;
         std::vector<geometry_msgs::Pose2D> waypoints_;
@@ -44,11 +43,11 @@ class RobotNode
         /*!
          * Method declarations.
         */
-        bool init_node_(geometry_msgs::Pose2D initial_pose);
+        bool init_node();
 
-        void run_node_();
+        void run_node();
 
-        void waypoint_callback_(const geometry_msgs::Pose2D new_map);
+        void waypoint_callback(geometry_msgs::Pose2D point);
+};
 
-        void publish_pose_();
-}
+#endif

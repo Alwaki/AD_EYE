@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(platoon_simulation)
+project(AD_EYE)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -103,10 +103,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES platoon_simulation
-#  CATKIN_DEPENDS geometry_msgs roscpp std_msgs
-#  DEPENDS system_lib
+  INCLUDE_DIRS 
+  include
+  CATKIN_DEPENDS geometry_msgs roscpp std_msgs
 )
 
 ###########
@@ -115,10 +114,7 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
-)
+include_directories(include ${catkin_INCLUDE_DIRS})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -133,8 +129,10 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/platoon_simulation_node.cpp)
 
+target_include_directories(${PROJECT_NAME}_node PRIVATE "include/")
+
+add_executable(${PROJECT_NAME}_node src/robot_node.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
