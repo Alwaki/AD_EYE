@@ -1,5 +1,14 @@
-"""Controller script for turtlebot 2"""
+"""Description:
+This script is used for turtlebot 2 when simulating the platoon in Gazebo.
 
+The script contains a longtitudinal and lateral P controller which controlls the linear speed
+and yaw angle of the turtlebot.
+The longitudinal controller is based on a difference between time stamps of the
+preceeding vehicles contionus trajectory.
+The lateral controller is based on the angular difference between the preceeding vehicles- and the turtlebots current pose.
+"""
+
+"""Import necesarry libraries and message types"""
 import math
 import rospy
 import tf

@@ -1,5 +1,14 @@
-"""Controller script for turtlebot 1"""
+"""Description:
+This script is used for turtlebot 1 when simulating the platoon in Gazebo.
 
+The script contains a longtitudinal and lateral P controller which controlls the linear speed
+and yaw angle of the turtlebot.
+The longitudinal controller is based on a difference between time stamps of the
+preceeding vehicles contionus trajectory.
+The lateral controller is based on the angular difference between the preceeding vehicles- and the turtlebots current pose.
+"""
+
+"""Import necesarry libraries and message types"""
 import math
 import rospy
 import tf
@@ -140,7 +149,7 @@ if __name__ == '__main__':
     """Subscribe to the Precsan vehicles odom topic"""
     sub2  = rospy.Subscriber('/vehicle/odom', Odometry, controller.Controller)
 
-    """Publisher to send linear speed and yaw angle to the turtlebot 1"""
+    """Publisher to send linear speed and yaw angle to turtlebot 1"""
     pub = rospy.Publisher('/robot1/cmd_vel', Twist, queue_size=10)
 
     """Waken callback when there is a message available, otherwise sleep"""
