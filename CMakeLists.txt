@@ -130,8 +130,6 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 
-target_include_directories(${PROJECT_NAME}_node PRIVATE "include/")
-
 add_executable(${PROJECT_NAME}_node src/robot_node.cpp)
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
