@@ -10,7 +10,7 @@ from tf.transformations import euler_from_quaternion
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
 
-"""Initiate for turtlebot 1"""
+"""Initiate node for turtlebot 1"""
 rospy.init_node('Vehicle1_node', anonymous = False)
 
 """ Initiate parameters """
