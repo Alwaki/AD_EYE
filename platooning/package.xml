@@ -4,11 +4,9 @@
   <version>1.0.0</version>
   <description>The platooning package</description>
 
-  <!-- One maintainer tag required, multiple allowed, one person per tag -->
-  <!-- Example:  -->
-  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
   <maintainer email="akie@kth.se">Alexander Wallen Kiessling</maintainer>
   <maintainer email="nmaatta@kth.se">Niclas Maatta</maintainer>
+  <maintainer email="youchens97@gmail.com">Youchen Sun</maintainer>
 
   <!-- One license tag required, multiple allowed, one license per tag -->
   <!-- Commonly used license strings: -->
