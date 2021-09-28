@@ -2,6 +2,7 @@
 <launch>
     <arg name="model"/>
     <arg name="tb3_id"/>
+    <arg name="leader_id"/>
     <arg name="tb3_x"/>
     <arg name="tb3_y"/>
     <arg name="tb3_z"/>
@@ -17,9 +18,12 @@
 
         <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg tb3_id) -x $(arg tb3_x) -y $(arg tb3_y) -z $(arg tb3_z) -Y $(arg tb3_yaw) -param robot_description" />
 
-        <include file="$(find platooning)/launch/sensor_filter.launch" />
+        <include file="$(find platooning)/launch/sensor_filter.launch"/>
         <include file="$(find platooning)/launch/amcl.launch" />
 
-        <node name="control_node" pkg="platooning" type="physical_node.py" output="screen" />
+        <node name="control_node" pkg="platooning" type="physical_node.py" output="screen" >
+            <remap from="/odom" to="/odometry/filtered"/>
+            <remap from="/vehicle/odom" to="$(arg leader_id)/odom"/>
+        </node>
      </group>
 </launch>
