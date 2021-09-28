@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from robot_class import *
 
 if __name__ == '__main__':

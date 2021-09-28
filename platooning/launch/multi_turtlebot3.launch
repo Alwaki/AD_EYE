@@ -50,7 +50,7 @@
       <param name="publish_frequency" type="double" value="20.0" />
       <param name="tf_prefix" value="$(arg first_tb3)" />
     </node>
-
+<!--
     <node pkg="robot_localization" type="ukf_localization_node" name="ukf_filter" clear_params="true">
       <rosparam command="load" file="$(find platooning)/config/sensor_filter.yaml" />
       <param name="imu0" value="imu"/>
@@ -63,7 +63,7 @@
       <rosparam command="load" file="$(find platooning)/config/amcl_parameters.yaml" />
        <param name="odom_frame_id" value="odom"/>
     </node>
-    
+-->
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg first_tb3) -x $(arg first_tb3_x_pos) -y $(arg first_tb3_y_pos) -z $(arg first_tb3_z_pos) -Y $(arg first_tb3_yaw) -param robot_description" />
   </group>
 
