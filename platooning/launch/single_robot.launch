@@ -19,5 +19,7 @@
 
         <include file="$(find platooning)/launch/sensor_filter.launch" />
         <include file="$(find platooning)/launch/amcl.launch" />
+
+        <node name="control_node" pkg="platooning" type="physical_node.py" output="screen" />
      </group>
 </launch>
