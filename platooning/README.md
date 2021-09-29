@@ -80,3 +80,6 @@ TO BE ADDED!
 ### Map making (For future)
 https://emanual.robotis.com/docs/en/platform/turtlebot3/slam/
 https://learn.turtlebot.com/2015/02/03/8/
+### Import Turtlebot Model in Prescan
+### Map making (For future)
+https://community.sw.siemens.com/s/article/Import-3-D-model-with-Model-Preparation-Tool-MPT
