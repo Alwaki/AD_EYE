@@ -82,3 +82,5 @@ https://emanual.robotis.com/docs/en/platform/turtlebot3/slam/
 https://learn.turtlebot.com/2015/02/03/8/
 ### Import Turtlebot Model in Prescan
 https://community.sw.siemens.com/s/article/Import-3-D-model-with-Model-Preparation-Tool-MPT
+
+https://cad.onshape.com/documents/179d4ba2a1f9231f93cae6e2/w/71e9066aee42d5039f880e2f/e/3cb7d487c93655e7067a3d5f?fbclid=IwAR1RUqGc8uZ0Gc7hAdDFxJSulvsWcBhz3JirojNLNmd525iloat9MULHanc
