@@ -123,7 +123,7 @@ class Robot:
             twist = Twist()
             twist.linear.x = control_output_v; twist.linear.y = 0.0; twist.linear.z = 0.0
             twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = control_output_w
-            pub.publish(twist)
+            self.pub.publish(twist)
 
             """Clean out old values from the stamped_waypoints list"""
             for i in range(len(self.stamped_waypoints)):
@@ -138,4 +138,4 @@ class Robot:
             """Stop the turtlebot"""
             twist.linear.x = 0.0; twist.linear.y = 0.0; twist.linear.z = 0.0
             twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = 0.0
-            pub.publish(twist)
+            self.pub.publish(twist)

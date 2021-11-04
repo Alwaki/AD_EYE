@@ -22,7 +22,7 @@
         <include file="$(find platooning)/launch/amcl.launch" />
 
         <node name="control_node" pkg="platooning" type="physical_node.py" output="screen" >
-            <remap from="/odom" to="/odometry/filtered"/>
+            <remap from="/odom" to="odometry/filtered"/>
             <remap from="/vehicle/odom" to="$(arg leader_id)/odom"/>
         </node>
      </group>
