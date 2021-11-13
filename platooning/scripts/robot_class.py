@@ -41,9 +41,9 @@ class Robot:
         self.time_since_last_callback = 0
 
         """Create subscribers and publishers"""
-        sub1 = rospy.Subscriber('/odom', Odometry, self.pose_cb)
-        sub2  = rospy.Subscriber('/vehicle/odom', Odometry, self.controller_cb)
-        pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
+        self.sub1 = rospy.Subscriber('/odom', Odometry, self.pose_cb)
+        self.sub2  = rospy.Subscriber('/vehicle/odom', Odometry, self.controller_cb)
+        self.pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
 
     def pose_cb(self, Odometry):
 
