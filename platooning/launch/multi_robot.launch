@@ -12,9 +12,12 @@
     </include>  
 
     <!-- Run the map server -->
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find platooning)/slam-maps/map7.yaml" >
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find platooning)/maps/map7.yaml" >
         <param name="frame_id" value="/map" />
     </node> 
+
+    <!-- Start RVIZ -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find platooning)/models/rviz/navigation.rviz" />
 
     <include file="$(find platooning)/launch/single_robot.launch" >
         <arg name="model"       default="waffle_pi" doc="model type [burger, waffle, waffle_pi]"/>
@@ -46,5 +49,6 @@
         <arg name="tb3_z"       default="0.0"/>
         <arg name="tb3_yaw"     default="0.0"/>
     </include>
+    
     
 </launch>
