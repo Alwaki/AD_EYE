@@ -1,0 +1,20 @@
+
+<launch>
+
+    <node pkg="robot_localization" type="ukf_localization_node" name="ukf_se_odom" clear_params="true">
+        <rosparam command="load" file="$(find platooning)/config/sensor_filter2.yaml" />
+        <!--<param name="odom0" value="/odom"/>
+        param name="imu0" value="/imu"/>-->
+
+        <!--<param name="odom_frame" value="odom"/>
+        <param name="world_frame" value="odom_frame"/>
+        <param name="base_link_frame" value="base_link"/>-->
+
+        <!--<remap from ="/odometry/filtered" to="/tb3_1/odom/"/>
+        <remap from ="/odometry/filtered" to="/tb3_2/odom/"/>-->
+        <!--<param name="imu1" value="/tb3_2/imu"/>
+        <param name="odom1" value="tb3_2/odom"/>-->
+
+    </node>
+
+</launch>

@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 """Description:
 This script is used for turtlebot 1 when simulating the platoon in Gazebo.
 
@@ -20,7 +21,7 @@ from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
 
 """Initiate node for turtlebot 1"""
-rospy.init_node('Vehicle1_node', anonymous = False)
+rospy.init_node('control_node1', anonymous = False)
 
 """ Initiate parameters """
 stamped_waypoints = [[0,0,0,0]]     #Holds time stamped waypoints of the preceeding vehicle.
@@ -144,13 +145,13 @@ if __name__ == '__main__':
     controller = controller()
 
     """Subscribe to turtlebots 1 odom topic """
-    sub1 = rospy.Subscriber('/robot1/odom', Odometry, controller.TurtleBotPose)
+    sub1 = rospy.Subscriber('/tb3_1/odom', Odometry, controller.TurtleBotPose)
 
     """Subscribe to the Precsan vehicles odom topic"""
-    sub2  = rospy.Subscriber('/vehicle/odom', Odometry, controller.Controller)
+    sub2  = rospy.Subscriber('/tb3_0/odom', Odometry, controller.Controller)
 
     """Publisher to send linear speed and yaw angle to turtlebot 1"""
-    pub = rospy.Publisher('/robot1/cmd_vel', Twist, queue_size=10)
+    pub = rospy.Publisher('/tb3_1/cmd_vel', Twist, queue_size=10)
 
     """Waken callback when there is a message available, otherwise sleep"""
     rospy.spin()

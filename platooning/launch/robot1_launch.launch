@@ -1,0 +1,29 @@
+<launch>
+    <arg name="model"       default="waffle_pi" doc="model type [burger, waffle, waffle_pi]"/>
+    <arg name="tb3_id"      default="tb3_1"/>
+    <arg name="leader_id"   default="tb3_0"/>
+    <arg name="tb3_x"       default="-1.0"/>
+    <arg name="tb3_y"       default="0.0"/>
+    <arg name="tb3_z"       default="0.0"/>
+    <arg name="tb3_yaw"     default="0.0"/>
+
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find platooning)/models/urdf/turtlebot3_$(arg model).urdf.xacro" />
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher1" output="screen">
+    <param name="publish_frequency" type="double" value="20.0" />
+    <param name="tf_prefix" value="$(arg tb3_id)" />
+    </node>
+
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg tb3_id) -x $(arg tb3_x) -y $(arg tb3_y) -z $(arg tb3_z) -Y $(arg tb3_yaw) -param robot_description" />
+
+    <!--
+    <node name="control_node1" pkg="platooning" type="controller_sim_T1.py" output="screen"></node>
+    <node name="control_node2" pkg="platooning" type="controller_sim_T2.py" output="screen"></node>-->
+
+    <include file="$(find platooning)/launch/sensor_filter1.launch"/>
+    <node name="control_node1" pkg="platooning" type="physical_node.py" output="screen">
+        <remap from="/odom" to="/$(arg tb3_id)/odometry/filtered"/>
+        <remap from="/vehicle/odom" to="/$(arg leader_id)/odom"/>
+    </node>
+
+
+</launch>

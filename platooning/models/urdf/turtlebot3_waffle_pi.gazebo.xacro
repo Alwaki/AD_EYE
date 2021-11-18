@@ -3,7 +3,7 @@
   <xacro:arg name="laser_visual"  default="false"/>
   <xacro:arg name="camera_visual" default="false"/>
   <xacro:arg name="imu_visual"    default="false"/>
-
+  <!--<frameid>tb3_0/base_link</frameid>-->
   <gazebo reference="base_link">
     <material>Gazebo/DarkGrey</material>
   </gazebo>
@@ -60,12 +60,14 @@
 
   <gazebo>
     <plugin name="turtlebot3_waffle_pi_controller" filename="libgazebo_ros_diff_drive.so">
+      <!--<robotNamespace>/tb3_0</robotNamespace>-->
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
       <odometrySource>world</odometrySource>
       <publishOdomTF>true</publishOdomTF>
       <robotBaseFrame>base_footprint</robotBaseFrame>
+      <!--<frameId>tb3_0/base_footprint</frameId>-->
       <publishWheelTF>false</publishWheelTF>
       <publishTf>true</publishTf>
       <publishWheelJointState>true</publishWheelJointState>
@@ -83,6 +85,8 @@
 
   <gazebo>
     <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+      <!--<robotNamespace>/tb3_0</robotNamespace>-->
+      <!--<frameId>tb3_0/base_link</frameId>-->
       <alwaysOn>true</alwaysOn>
       <bodyName>imu_link</bodyName>
       <frameName>imu_link</frameName>

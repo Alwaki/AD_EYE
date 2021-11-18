@@ -23,17 +23,17 @@ class Robot:
     def __init__(self):
 
         """ Initiate parameters """
-        self.stamped_waypoints = [[0,0,0,0]]     #Holds time stamped waypoints of the preceeding vehicle.
+        self.stamped_waypoints = [[0.5,0,0,0]]     #Holds time stamped waypoints of the preceeding vehicle.
         self.last_odom = [0, 0]                  #List used to check if the Prescan simulation is at its end.
         self.t_ref = 2                           #Allowed "distance" in seconds between the the vehicles
         self.Kp_v = 2                            #Controller gain longitudianl controller
         self.Kp_w = 1.5                          #Controller gain lateral controller
         self.limit_v = 0.26                      #Saturation limit velocity
         self.limit_w = 1.82                      #Saturation limit yaw angle
-        self.waypoints_tolerance = 0.8           #Waypoint tolerance to clean out old values from the stamped_waypoints list.
+        self.waypoints_tolerance = 0.5          #Waypoint tolerance to clean out old values from the stamped_waypoints list.
 
         """Initiate turtlebots current pose"""
-        self.robotCurrentPose = [0,0,0,0]
+        self.robotCurrentPose = [0,0,0]
 
         """Initiate parameters to calculate time between callbacks, i.e samplingtime"""
         self.last_callback_time = 0
@@ -41,8 +41,8 @@ class Robot:
         self.time_since_last_callback = 0
 
         """Create subscribers and publishers"""
-        self.sub1 = rospy.Subscriber('/odom', Odometry, self.pose_cb)
-        self.sub2  = rospy.Subscriber('/vehicle/odom', Odometry, self.controller_cb)
+        sub1 = rospy.Subscriber('/odom', Odometry, self.pose_cb)
+        sub2  = rospy.Subscriber('/vehicle/odom', Odometry, self.controller_cb)
         self.pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
 
     def pose_cb(self, Odometry):
@@ -88,6 +88,7 @@ class Robot:
             t1 = self.stamped_waypoints[0][3]
             t2 = self.stamped_waypoints[-1][3]
             dt = t2 - t1
+            #print(dt,"dt")
             error_longitudinal = dt - self.t_ref
 
             #Integrator_v = Integrator_v + error_longitudinal * time

@@ -1,0 +1,11 @@
+<launch>
+
+        <!-- Launch controller scipts -->
+    <node name="control_node1" pkg="platooning" type="controller_sim_T1.py" output="screen"></node>
+    <node name="control_node2" pkg="platooning"  type="controller_sim_T2.py" output="screen"></node>
+
+
+
+
+
+</launch>
