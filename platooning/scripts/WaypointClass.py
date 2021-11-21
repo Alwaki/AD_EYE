@@ -6,9 +6,9 @@ related to waypoints.
 
 class Waypoint():
     def __init__(self):
-        self.local_pose = []
-        self.waypoint_list = [[]]
-        self.waypoints_tolerance = 0.4 
+        self.local_pose = []                # The current pose of the robot
+        self.waypoint_list = [[]]           # List of goals for the robot to reach
+        self.waypoints_tolerance = 0.4      # Tolerance threshhold for removing achieved goals
         self.waypoints_tolerance_sqrd = self.waypoints_tolerance ** 2
     
     def clear_waypoints(self, current_pose):

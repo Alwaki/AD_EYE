@@ -12,10 +12,11 @@ class Planner(PID, Waypoint):
     def __init__(self):
         PID.__init__(self)
         Waypoint.__init__(self)
-        self.running_flag = True
-        self.longitudinal_ref = 0.5
-        self.local_speed = []
-        self.deceleration_constant = 0.1
+        self.running_flag = True            # Boolean logic used to indicate if follower
+                                            # logic should continue
+        self.longitudinal_ref = 0.5         # Used as reference to create longitudinal error
+        self.local_speed = []               # Stores current speed of robot as [linear, angular]
+        self.deceleration_constant = 0.1    # Deceleration constant used to simulate stop with inertia
     
     def msg_2_list(self, msg):
         ''' 
