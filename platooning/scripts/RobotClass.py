@@ -4,7 +4,7 @@ class Robot(Planner):
 
     def __init__(self):
         Planner.__init__(self)
-        self.local_pose_sub = rospy.Subscriber('/amcl_pose', PoseWithCovarianceStamped, \
+        self.local_pose_sub = rospy.Subscriber('/odom', PoseWithCovarianceStamped, \
                                                 self.local_pose_update_cb)
         self.follower_sub   = rospy.Subscriber('/vehicle/amcl_pose', PoseWithCovarianceStamped,\
                                                 self.follower_logic_cb)
