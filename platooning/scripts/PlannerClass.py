@@ -63,7 +63,7 @@ class Planner(PID, Waypoint):
 
                 # Handle waypoints, add the incoming one and remove old ones 
                 [x,y,yaw] = self.msg_2_list(msg)
-                self.add_waypoint(msg)
+                self.add_waypoint([x,y])
                 self.clear_waypoints()
 
                 # If there are waypoints, calculate control sequence for oldest waypoint
