@@ -1,4 +1,8 @@
-
+'''
+Class which is inherited, provides waypoint methods for cleaning
+the waypoint list, and adding waypoints. Also stores parameters and lists
+related to waypoints.
+'''
 
 class Waypoint():
     def __init__(self):

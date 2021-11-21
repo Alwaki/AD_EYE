@@ -1,3 +1,8 @@
+'''
+Class which is inherited, provides PID controller methods and 
+stores control parameters.
+'''
+
 from libraries import *
 
 class PID:

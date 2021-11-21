@@ -1,3 +1,9 @@
+'''
+Class that inherits the PID controller and Waypoint functionality.
+Uses these to generate planning sequences in the form of speed messages,
+and stop commands. 
+'''
+
 from PIDClass import *
 from WaypointClass import *
 
