@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 
-from robot_class import *
+from RobotClass import *
 
 if __name__ == '__main__':
     """Initiate node for turtlebot 1"""
