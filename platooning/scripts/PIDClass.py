@@ -1,11 +1,10 @@
-'''
-Class which is inherited, provides PID controller methods and
-stores control parameters.
-'''
-
 from libraries import *
 
 class PID:
+    '''
+    Class which is inherited, provides PID controller methods and
+    stores control parameters.
+    '''
 
     def __init__(self):
         self.Kp_v = 2                     # Proportional controller gain longitudinal controller

@@ -1,11 +1,10 @@
-'''
-Class which inherits all other classes. Creates functionality for
-ROS communication.
-'''
-
 from PlannerClass import *
 
 class Robot(Planner):
+    '''
+    Class which inherits all other classes. Creates functionality for
+    ROS communication.
+    '''
 
     def __init__(self):
         Planner.__init__(self)

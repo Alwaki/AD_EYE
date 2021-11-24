@@ -1,10 +1,9 @@
-'''
-Class which is inherited, provides waypoint methods for cleaning
-the waypoint list, and adding waypoints. Also stores parameters and lists
-related to waypoints.
-'''
-
 class Waypoint():
+    '''
+    Class which is inherited, provides waypoint methods for cleaning
+    the waypoint list, and adding waypoints. Also stores parameters and lists
+    related to waypoints.
+    '''
     def __init__(self):
         self.local_pose = []                # The current pose of the robot
         self.waypoint_list = []           # List of goals for the robot to reach

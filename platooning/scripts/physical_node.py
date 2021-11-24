@@ -4,8 +4,6 @@
 Code for creating the node and handing control to ROS network.
 '''
 
-
-
 from RobotClass import *
 
 if __name__ == '__main__':
