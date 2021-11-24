@@ -1,0 +1,35 @@
+<!-- Launch Arguments -->
+
+<launch>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find platooning)/worlds/empty.world"/>
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>
+
+
+    <include file="$(find platooning)/launch/test_single.launch">
+        <arg name="model"       default="waffle_pi" doc="model type [burger, waffle, waffle_pi]"/>
+        <arg name="tb3_id"      default="tb3_0"/>
+        <arg name="leader_id"   default="vehicle"/>
+        <arg name="tb3_x"       default="0.0"/>p
+        <arg name="tb3_y"       default="0.0"/>
+        <arg name="tb3_z"       default="0.0"/>
+        <arg name="tb3_yaw"     default="0.0"/>
+    </include>
+
+   <include file="$(find platooning)/launch/test_single.launch">
+        <arg name="model"       default="waffle_pi" doc="model type [burger, waffle, waffle_pi]"/>
+        <arg name="tb3_id"      default="tb3_1"/>
+        <arg name="leader_id"   default="tb3_0"/>
+        <arg name="tb3_x"       default="-0.5"/>
+        <arg name="tb3_y"       default="0.0"/>
+        <arg name="tb3_z"       default="0.0"/>
+        <arg name="tb3_yaw"     default="0.0"/>
+    </include>
+
+</launch>

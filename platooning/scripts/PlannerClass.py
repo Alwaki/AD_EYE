@@ -41,7 +41,6 @@ class Planner(PID, Waypoint):
         twist.angular.x = 0.0; twist.angular.y = 0.0; twist.angular.z = angular_speed
         return twist
 
-
     def local_pose_update_cb(self, msg):
         '''
         Recieves a geometry message, converts it to list format
@@ -49,28 +48,37 @@ class Planner(PID, Waypoint):
         '''
         [x,y,yaw] = self.msg_2_list(msg)
         self.local_pose = [x,y,yaw]
-
-    def follower_logic_cb(self, msg):
+    
+    def waypoint_update_cb(self, msg):
         '''
         Recieves a geometry message, converts it to list format
-        and tries to add it to the list of waypoints. Moreover,
-        will also calculate a control sequence based on existing
-        waypoints and the vehicle's current pose, and publish
-        a speed command based on this control.
+        and tries to add it to the list of waypoints.
+        '''
+        [x,y,yaw] = self.msg_2_list(msg)
+        self.add_waypoint([x,y])
+    
+    def scheduled_follower_logic(self):
+        '''
+        This method is meant to be called at a fixed rate.
+        Will attempt to clear waypoints close to the robot,
+        and calculate a control sequence based on existing
+        waypoints and the vehicle's current pose. Also
+        publishes a speed command based on this control.
         '''
 
-        #Get the time between callbacks, i.e the sampling time
+        # Get the time between callbacks, i.e the sampling time
         self.sampling_time()
 
+        # Check that the vehicle has not been stopped
         if self.running_flag:
+
+            # Check that the robot has a current pose
             if len(self.local_pose) != 0:
 
-                # Handle waypoints, add the incoming one and remove old ones
-                [x,y,yaw] = self.msg_2_list(msg)
-                self.add_waypoint([x,y])
+                # Clear all waypoints nearby
                 self.clear_waypoints(self.local_pose)
 
-                # If there are waypoints, calculate control sequence for oldest waypoint
+                # If there are waypoints, calculate control sequence for latest waypoint
                 if len(self.waypoint_list) > 0:
 
                     # Calculate longitudinal control
@@ -93,7 +101,7 @@ class Planner(PID, Waypoint):
 
                     # Update current speed information
                     self.local_speed = [longitudinal_control, lateral_control]
-
+                
                 # If there are no waypoints
                 else:
 
@@ -105,8 +113,6 @@ class Planner(PID, Waypoint):
 
                     # Update current speed information
                     self.local_speed = [0, 0]
-
-
 
     def stop(self, type = 0):
         '''

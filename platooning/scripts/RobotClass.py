@@ -10,9 +10,9 @@ class Robot(Planner):
     def __init__(self):
         Planner.__init__(self)
         self.local_pose_sub = rospy.Subscriber('/odom', PoseWithCovarianceStamped, \
-                                                self.local_pose_update_cb)
+                                                self.local_pose_update_cb, queue_size=10)
         self.follower_sub   = rospy.Subscriber('/vehicle/odom', PoseWithCovarianceStamped,\
-                                                self.follower_logic_cb)
+                                                self.waypoint_update_cb, queue_size=10)
         self.speed_pub      = rospy.Publisher('cmd_vel', Twist, queue_size=1)
         self.stop_srv       = rospy.Service('stop', SetBool, self.stop_service)
 
