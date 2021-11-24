@@ -13,7 +13,7 @@ class Robot(Planner):
                                                 self.local_pose_update_cb)
         self.follower_sub   = rospy.Subscriber('/vehicle/odom', PoseWithCovarianceStamped,\
                                                 self.follower_logic_cb)
-        self.speed_pub      = rospy.Publisher('cmd_vel', Twist, queue_size=10)
+        self.speed_pub      = rospy.Publisher('cmd_vel', Twist, queue_size=1)
         self.stop_srv       = rospy.Service('stop', SetBool, self.stop_service)
 
     def publish_speed(self, msg):

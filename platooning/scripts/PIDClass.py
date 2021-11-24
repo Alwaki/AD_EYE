@@ -21,6 +21,9 @@ class PID:
         self.Iterm_v = 0                         #Inititate the integral part of the longitudinal PI controller
         self.Iterm_w = 0                         #Inititate the integral part of the lateral PI controller
 
+        self.dt = 0                         #Initiate sampling time i.e time between callbacks
+        self.previous_callback_time = 0     #Inititate parameter used to store previous callback time
+        
     def longitudinal_PI_control(self, error):
 
         #Integral part of the controller
@@ -64,3 +67,13 @@ class PID:
         #If we want to add D part to the controller:
         #previous_error = error
         # Kd * (error - previous_error)/self.dt
+    
+    def sample_time(self):
+        #Get current time
+        current_time = rospy.get_time()
+        #Calculate callback time since last callback i.e the samplingtime dt
+        if self.not_first_callback:
+            self.dt = rospy.get_time() - self.previous_callback_time
+        self.not_first_callback = True
+        self.previous_callback_time = current_time
+

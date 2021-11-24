@@ -6,14 +6,12 @@ and stop commands.
 
 from PIDClass import *
 from WaypointClass import *
-from SamplingTime import *
 
-class Planner(PID, Waypoint, Samplingtime):
+class Planner(PID, Waypoint):
 
     def __init__(self):
         PID.__init__(self)
         Waypoint.__init__(self)
-        Samplingtime.__init__(self)
         self.running_flag = True            # Boolean logic used to indicate if follower
                                             # logic should continue
         self.longitudinal_ref = 0.35         # Used as reference to create longitudinal error
@@ -74,15 +72,11 @@ class Planner(PID, Waypoint, Samplingtime):
 
                 # If there are waypoints, calculate control sequence for oldest waypoint
                 if len(self.waypoint_list) > 0:
+
                     # Calculate longitudinal control
-
-                    print(len(self.waypoint_list),'way')
-
                     distance = math.hypot(self.waypoint_list[-1][0] - self.local_pose[0], \
                                         self.waypoint_list[-1][1] - self.local_pose[1])
-
                     longitudinal_error = distance - self.longitudinal_ref
-
                     longitudinal_control = self.longitudinal_PI_control(longitudinal_error)
 
                     # Calculate lateral control
