@@ -2,6 +2,17 @@
 
 <launch>
 
+
+   <!-- Enable sim time when using gazebo-->
+   <!--<param name="/use_sim_time" value="true"/>-->
+
+      <!-- Run the map server -->
+   <node name="map_server" pkg="map_server" type="map_server" args="$(find platooning)/slam-maps/BIGmap.yaml" >
+     <!-- Enable line below when using gazebo -->
+      <!--<param name="frame_id" value="/map" />-->
+   </node>
+
+   <!--
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(find platooning)/worlds/empty.world"/>
         <arg name="paused" value="false"/>
@@ -9,46 +20,63 @@
         <arg name="gui" value="true"/>
         <arg name="headless" value="false"/>
         <arg name="debug" value="false"/>
-    </include>  
+    </include>-->
 
-    <!-- Run the map server -->
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find platooning)/maps/map7.yaml" >
-        <param name="frame_id" value="/map" />
-    </node> 
 
-    <!-- Start RVIZ -->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find platooning)/models/rviz/navigation.rviz" />
-
-    <include file="$(find platooning)/launch/single_robot.launch" >
+    <include file="$(find platooning)/launch/single_robot.launch">
         <arg name="model"       default="waffle_pi" doc="model type [burger, waffle, waffle_pi]"/>
         <arg name="tb3_id"      default="tb3_0"/>
         <arg name="leader_id"   default="vehicle"/>
-        <arg name="tb3_x"       default="0.0"/>
+        <arg name="tb3_x"       default="0.0"/>p
         <arg name="tb3_y"       default="0.0"/>
         <arg name="tb3_z"       default="0.0"/>
         <arg name="tb3_yaw"     default="0.0"/>
+        <arg name="number_id"     default="0"/>
     </include>
 
-
-    <include file="$(find platooning)/launch/single_robot.launch" >
+   <include file="$(find platooning)/launch/single_robot.launch">
         <arg name="model"       default="waffle_pi" doc="model type [burger, waffle, waffle_pi]"/>
         <arg name="tb3_id"      default="tb3_1"/>
         <arg name="leader_id"   default="tb3_0"/>
-        <arg name="tb3_x"       default="-1.0"/>
+        <arg name="tb3_x"       default="-0.5"/>
         <arg name="tb3_y"       default="0.0"/>
         <arg name="tb3_z"       default="0.0"/>
         <arg name="tb3_yaw"     default="0.0"/>
+        <arg name="number_id"     default="1"/>
     </include>
-    
+
+    <!--
     <include file="$(find platooning)/launch/single_robot.launch" >
         <arg name="model"       default="waffle_pi" doc="model type [burger, waffle, waffle_pi]"/>
         <arg name="tb3_id"      default="tb3_2"/>
         <arg name="leader_id"   default="tb3_1"/>
-        <arg name="tb3_x"       default="-2.0"/>
+        <arg name="tb3_x"       default="-1"/>
         <arg name="tb3_y"       default="0.0"/>
         <arg name="tb3_z"       default="0.0"/>
         <arg name="tb3_yaw"     default="0.0"/>
+        <arg name="number_id"     default="2"/>
+    </include>-->
+
+
+    <!-- AMCL launch -->
+
+    <include file="$(find platooning)/launch/amcl_tb3_0.launch" >
+      <arg name="initial_pose_x"  default="0.5"/>
+      <arg name="initial_pose_y"  default="0"/>
     </include>
-    
-    
+
+<!--
+    <include file="$(find platooning)/launch/amcl_tb3_1.launch" >
+      <arg name="initial_pose_x"  default="0"/>
+      <arg name="initial_pose_y"  default="0"/>
+    </include>-->
+
+<!--
+    <include file="$(find platooning)/launch/amcl_tb3_2.launch" >
+      <arg name="initial_pose_x"  default="-1"/>
+      <arg name="initial_pose_y"  default="0"/>
+    </include>-->
+
+    <!-- Start RVIZ -->
+   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find platooning)/models/rviz/navigation.rviz" />
 </launch>

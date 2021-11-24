@@ -1,0 +1,13 @@
+background_b: 255
+background_g: 86
+background_r: 150
+rosdistro: 'kinetic
+
+  '
+roslaunch:
+  uris: {host_adeye_laptop__36385: 'http://adeye-laptop:36385/'}
+rosversion: '1.12.16
+
+  '
+run_id: fdede6ac-71ef-11eb-a039-f01faf5bd8d9
+turtlesim: {background_b: 250, background_g: 0, background_r: 250}

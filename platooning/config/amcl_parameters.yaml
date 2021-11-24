@@ -1,4 +1,5 @@
 odom_model_type: diff
+global_frame_id: map
 transform_tolerance: 0.2
 gui_publish_rate: 10.0
 laser_max_beams: 30

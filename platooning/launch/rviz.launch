@@ -1,0 +1,6 @@
+<!-- Launch Arguments -->
+<launch>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find platooning)/models/rviz/navigation.rviz" />
+    
+</launch>

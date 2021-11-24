@@ -1,6 +1,12 @@
 #!/usr/bin/env python2
 
-from robot_class import *
+'''
+Code for creating the node and handing control to ROS network.
+'''
+
+
+
+from RobotClass import *
 
 if __name__ == '__main__':
     """Initiate node for turtlebot 1"""

@@ -31,15 +31,28 @@ See the package.xml for dependencies.
 ## Usage details
 ### Config files
 
-* **amcl_parameters.yaml:** Parameters for AMCL package, used for localization with lidar.
-* **sensor_filter.yaml:** Parameters for robot_localization package, used for sensor fusion to filter odometry data.
+Currently no standalone config files. 
 
 ### Launch files
 
-* **amcl.launch** Launch file for AMCL package.
-* **sensor_filter.launch:** Launch file for robot_localization package.
-* **single_robot.launch:** Used to launch a single robot instance, using parameters passed from multi launch.
-* **multi_robot.launch:** Used to launch several robots, and deciding parameters passed to each robot.
+TO BE ADDED!
+
+* **mcl.launch:** Only simple launch which starts the single mcl node.
+
+
+### Subscribed Topics
+
+TO BE ADDED!
+
+* **`/temperature`** ([sensor_msgs/Temperature])
+
+	The temperature measurements from which the average is computed.
+
+
+### Published Topics
+
+TO BE ADDED!
+
 
 ### Services
 

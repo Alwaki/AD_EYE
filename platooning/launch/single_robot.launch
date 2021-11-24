@@ -7,32 +7,38 @@
     <arg name="tb3_y"/>
     <arg name="tb3_z"/>
     <arg name="tb3_yaw"/>
-    
-     <group ns = "$(arg tb3_id)">
-        <!-- Note that to use separate base names use the different urdf files in line below -->
-        <param name="robot_description" command="$(find xacro)/xacro --inorder $(find platooning)/models/urdf/turtlebot3_$(arg model).urdf.xacro" />
-        <param name="tf_prefix" value="$(arg tb3_id)" />
-        <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
-        <param name="publish_frequency" type="double" value="20.0" />
-        </node>
+    <arg name="number_id"/>
 
-        <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg tb3_id) -x $(arg tb3_x) -y $(arg tb3_y) -z $(arg tb3_z) -Y $(arg tb3_yaw) -param robot_description" />
+     <group ns = "$(arg tb3_id)">
+
+      <!--
+      <param name="tf_prefix" value="$(arg tb3_id)"/>
+      <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+        <param name="publish_frequency" type="double" value="20.0" />
+      </node>-->
+
+      <!-- when using gazebo-->
+    <!--  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model $(arg tb3_id) -x $(arg tb3_x) -y $(arg tb3_y) -z $(arg tb3_z) -Y $(arg tb3_yaw) -param robot_description" />-->
+
+
+
+      <!-- Launch robot localization-->
+      <!--  <include file="$(find platooning)/launch/sensor_filter$(arg tb3_id).launch"/>-->
 
         <!-- Turned off for now due to TF issues -->
-        <!--
-        <node pkg="robot_localization" type="ukf_localization_node" name="ukf_filter" clear_params="true">
-            <rosparam command="load" file="$(find platooning)/config/sensor_filter.yaml" />
-            <remap from="/odom" to="odom"/>
-            <remap from="/imu" to="imu"/>
-            <param name="base_link_frame" value="base_footprint"/>
-        </node>
-        -->
+      <!--
+      <node pkg="robot_localization" type="ukf_localization_node" name="ukf_filter" clear_params="true">
+        <rosparam command="load" file="$(find platooning)/config/sensor_filter.yaml" />
+        <remap from="/odom" to="odom"/>
+        <remap from="/imu" to="imu"/>
+        <param name="base_link_frame" value="base_footprint"/>
+      </node> -->
 
-        <include file="$(find platooning)/launch/amcl.launch" />
 
-        <node name="control_node" pkg="platooning" type="physical_node.py" output="screen" >
-            <remap from="/odom" to="/odometry/filtered"/>
-            <remap from="/vehicle/odom" to="/$(arg leader_id)/odometry/filtered"/>
+
+        <node name="control_node" pkg="platooning" type="physical_node.py" output="screen">
+            <remap from="/odom" to="/$(arg tb3_id)/amcl_pose"/>
+            <remap from="/vehicle/odom" to="/$(arg leader_id)/amcl_pose"/>
         </node>
      </group>
 </launch>
