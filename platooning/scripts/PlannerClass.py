@@ -67,7 +67,7 @@ class Planner(PID, Waypoint):
         '''
 
         # Get the time between callbacks, i.e the sampling time
-        self.sampling_time()
+        self.sample_time()
 
         # Check that the vehicle has not been stopped
         if self.running_flag:
