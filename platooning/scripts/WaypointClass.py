@@ -22,8 +22,6 @@ class Waypoint():
         If the distance is greater than the tolerance threshhold, the
         loop is broken. Note that squared distance is used for speed.
         '''
-
-
         distance_sqrd = 0
         while (distance_sqrd < self.waypoints_tolerance_sqrd) and (len(self.waypoint_list) > 0):
             distance_sqrd = (self.waypoint_list[0][0] - self.local_pose[0]) ** 2 \
@@ -40,7 +38,8 @@ class Waypoint():
         a certain tolerance, then the waypoint is added to a list
         of waypoints. Note that squared distance is used for speed.
         '''
-        distance_sqrd = (waypoint[0] - self.local_pose[0]) ** 2 \
-                + (waypoint[1] - self.local_pose[1]) ** 2
-        if distance_sqrd > self.waypoints_tolerance_sqrd:
-            self.waypoint_list.append(waypoint)
+        if len(self.local_pose) != 0:
+            distance_sqrd = (waypoint[0] - self.local_pose[0]) ** 2 \
+                    + (waypoint[1] - self.local_pose[1]) ** 2
+            if distance_sqrd > self.waypoints_tolerance_sqrd:
+                self.waypoint_list.append(waypoint)
