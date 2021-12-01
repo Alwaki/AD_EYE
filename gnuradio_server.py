@@ -14,16 +14,11 @@ UDP_PORT = 5006
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) 
 sock.bind((UDP_IP, UDP_PORT))
 
-def handle_add_two_ints(req):
-    print("Returning [%s + %s = %s]"%(req.a, req.b, (req.a + req.b)))
-    #return AddTwoIntsResponse(req.a + req.b)
-
-def add_two_ints_server():
+def gnuradio_server():
     pub = rospy.Publisher('chatter', String, queue_size=10)
-    rospy.init_node('add_two_ints_server')
+    rospy.init_node('gnuradio_server')
     rate = rospy.Rate(10) # 10hz
-    
-    s = rospy.Service('add_two_ints', AddTwoInts, handle_add_two_ints)
+
     print("the socket is intialized...")
     while not rospy.is_shutdown():
         data, addr = sock.recvfrom(1024)
@@ -37,4 +32,4 @@ def add_two_ints_server():
 
 if __name__ == "__main__":
     
-    add_two_ints_server()
+    gnuradio_server()
