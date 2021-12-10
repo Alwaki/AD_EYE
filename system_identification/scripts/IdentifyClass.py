@@ -60,8 +60,12 @@ class Identify():
         if self.counter == 100:
             results = open("results.txt", "w")
             for i in range(len(self.time_data)):
+                '''
                 results.write(str(self.time_data[i]) + ';' + str(self.linear_step_data[i]) + ';' \
                               + str(self.linear_vel_data[i]) + ';' + str(self.angular_step_data[i])\
                               + ';' + str(self.angular_vel_data[i]) + "\n")
+                '''
+                results.write(str(self.linear_step_data[i]))
+                
             results.close()
             rospy.signal_shutdown('done')
