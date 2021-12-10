@@ -58,14 +58,17 @@ class Identify():
 
         # At a reasonable time, write data to file and shutdown node
         if self.counter == 100:
-            results = open("results.txt", "w")
+            linear_results = open("linear_results.txt", "w")
+            angular_results = open("angular_results.txt", "w")
             for i in range(len(self.time_data)):
                 '''
-                results.write(str(self.time_data[i]) + ';' + str(self.linear_step_data[i]) + ';' \
+                linear_results.write(str(self.time_data[i]) + ';' + str(self.linear_step_data[i]) + ';' \
                               + str(self.linear_vel_data[i]) + ';' + str(self.angular_step_data[i])\
                               + ';' + str(self.angular_vel_data[i]) + "\n")
                 '''
-                results.write(str(self.linear_step_data[i]) + "\n")
+                linear_results.write(str(self.linear_vel_data[i]) + "\n")
+                angular_results.write(str(self.angular_vel_data[i]) + "\n")
                 
-            results.close()
+            linear_results.close()
+            angular_results.close()
             rospy.signal_shutdown('done')
