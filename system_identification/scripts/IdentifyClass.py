@@ -65,7 +65,7 @@ class Identify():
                               + str(self.linear_vel_data[i]) + ';' + str(self.angular_step_data[i])\
                               + ';' + str(self.angular_vel_data[i]) + "\n")
                 '''
-                results.write(str(self.linear_step_data[i]))
+                results.write(str(self.linear_step_data[i]) + "\n")
                 
             results.close()
             rospy.signal_shutdown('done')
