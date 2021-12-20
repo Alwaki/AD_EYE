@@ -47,6 +47,10 @@ For the GNU-RADIO client script first get into the correct folder by typing:
 * cd catkin_ws/src/platooning/scripts/
 * Then in the same terminal type: python gnuradio_client.py
 
+*The RQT-graph shoud look like this:**
+
+![RQT](https://github.com/Alwaki/AD_EYE/blob/main/rqt.png)
+
 # A comment about using darknet_ros package with name space
 
 To use darknet ros with name space some modifications to the darknet_ros package had to be made.
