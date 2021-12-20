@@ -28,9 +28,11 @@ the bashrc file inside the turtlebots.
 **Launch the scripts to start and configure the turtlebots and the raspicam camera**
 
 * ROS_NAMESPACE=tb3_0 roslaunch turtlebot3_bringup adeyetb0.launch multi_robot_name:="tb3_0" set_lidar_frame_id:="tb3_0/base_scan"
+
   ROS_NAMESPACE=tb3_0 roslaunch turtlebot3_bringup turtlebot3_rpicamera.launch
 
 * ROS_NAMESPACE=tb3_1 roslaunch turtlebot3_bringup adeyetb1.launch multi_robot_name:="tb3_1" set_lidar_frame_id:="tb3_1/base_scan"
+
   ROS_NAMESPACE=tb3_1 roslaunch turtlebot3_bringup turtlebot3_rpicamera.launch
 
 
