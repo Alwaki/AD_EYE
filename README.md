@@ -1,5 +1,5 @@
 # AD_EYE
-This respository includes a Platooning package, object detection package, system identification package as well as GNU-RADIO (ITS-G5) interfacing script with ROS.
+This respository includes a Platooning package, object detection package, system identification package and a GNU-RADIO (ITS-G5) interfacing script with ROS.
 
 # Important comment on how to build the workspace
 
