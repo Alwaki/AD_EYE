@@ -5,7 +5,7 @@
 This is a object detection package intended for detection of trucks or car's along the road.
 However, other types of objects can also be detected by changing the code.
 This package use the darknet_ros package to enable the use of YOLOv3 for object detection.
-The darknet_ros package is available here: https://github.com/leggedrobotics/darknet_ros
+The darknet_ros package is available here: https://github.com/leggedrobotics/darknet_ros.
 Furthermore, the object detection package use pre-trained weights also available in the darknet_ros package.
 
 **Keywords:** Object detection, YOLOv3, darknet_ros, ROS
@@ -37,16 +37,11 @@ see appendix E.2.2 in AD-EYES final report on how to install this.
 
 To launch this package type: roslaunch object_detection object_detection_main.launch in a terminal.
 
-* This will launch the object detection algorithm for each turtlbots as well as one instance of darknet ros
+* This will launch the object detection algorithm for each turtlebots as well as one instance of darknet ros
 for each turtlebot.
 
 ### Launch files
 
 * object_detection_main.launch 
 * object_detection.launch
-
-
-
-
-
 
