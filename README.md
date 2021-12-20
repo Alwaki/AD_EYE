@@ -6,7 +6,7 @@ This respository includes a Platooning package, object detection package, system
 * Get into the workspace: cd catkin_ws in the terminal
 * Then build the workspace with the following command: catkin_make -DCMAKE_BUILD_TYPE=Release
 
-# Launch the turtlebots with namespace**
+# Launch the turtlebots with namespace
 
 In order to make the launch process of the turlebots smoother modified launchfile needs to be 
 put inside the respective turtlebot.
