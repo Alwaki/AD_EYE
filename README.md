@@ -47,7 +47,7 @@ For the GNU-RADIO client script first get into the correct folder by typing:
 * cd catkin_ws/src/platooning/scripts/
 * Then in the same terminal type: python gnuradio_client.py
 
-*The RQT-graph shoud look like this:**
+*The RQT-graph shoud look like this:*
 
 ![RQT](https://github.com/Alwaki/AD_EYE/blob/main/rqt.png)
 
