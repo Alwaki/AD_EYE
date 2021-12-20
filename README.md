@@ -47,7 +47,7 @@ For the GNU-RADIO client script first get into the correct folder by typing:
 * cd catkin_ws/src/platooning/scripts/
 * Then in the same terminal type: python gnuradio_client.py
 
-*The RQT-graph shoud look like this:*
+*The RQT-graph should look like this:*
 
 ![RQT](https://github.com/Alwaki/AD_EYE/blob/main/rqt.png)
 
@@ -56,7 +56,7 @@ For the GNU-RADIO client script first get into the correct folder by typing:
 To use darknet ros with name space some modifications to the darknet_ros package had to be made.
 
 * In darknet_ros/launch/, the yolo_v3.launch and darknet_ros.launch were altered slightly.
-* In darknet_ros/config, tb3_0ros.yaml and tb3_1ros.yaml were added so the package would publish
+* In darknet_ros/config/, tb3_0ros.yaml and tb3_1ros.yaml were added so the package would publish
 and subscribe within the corresponding namespace of the turtlebots which is tb3_0 and tb3_1.
 
 
