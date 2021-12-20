@@ -30,14 +30,14 @@ See the package.xml for dependencies.
 ## Usage details
 ### Config files
 
-navigation.rviz
+* navigation.rviz
 
 ### Launch files
 
-multi_robot.launch (this launch file launch all the other launch files)
-single_robot.launch
-amcl_tb3_0.launch
-amcl_tb3_1.launch
+* multi_robot.launch (this launch file launch all the other launch files)
+* single_robot.launch
+* amcl_tb3_0.launch
+* amcl_tb3_1.launch
 
 
 ### Subscribed Topics
