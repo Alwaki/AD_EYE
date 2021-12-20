@@ -1,9 +1,0 @@
-
-<launch>
-
-    <node pkg="amcl" type="amcl" name="amcl" output="screen">
-      <rosparam command="load" file="$(find platooning)/config/amcl_parameters.yaml" />
-       <param name="odom_frame_id" value="odom"/>
-    </node>
-
-</launch>
