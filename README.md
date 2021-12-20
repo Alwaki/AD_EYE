@@ -6,9 +6,7 @@ This respository includes a Platooning package, object detection package, system
 * Get into the workspace: cd catkin_ws in the terminal
 * Then build the workspace with the following command: catkin_make -DCMAKE_BUILD_TYPE=Release
 
-# How to launch the whole system
-
-**Launch the turtlebots with namespace**
+# Launch the turtlebots with namespace**
 
 In order to make the launch process of the turlebots smoother modified launchfile needs to be 
 put inside the respective turtlebot.
@@ -36,7 +34,7 @@ the bashrc file inside the turtlebots.
   ROS_NAMESPACE=tb3_1 roslaunch turtlebot3_bringup turtlebot3_rpicamera.launch
 
 
-**Launch the platooning package, object detection package, and the GNU-RADIO client script to interface ITS-G5 with ROS.**
+# Launch the platooning package, object detection package, and the GNU-RADIO client script to interface ITS-G5 with ROS.
 
 Open up additionaly 3 terminals and in each terminal type:
 
