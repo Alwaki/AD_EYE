@@ -30,7 +30,7 @@ See the package.xml for dependencies.
 ## Usage details
 ### Config files
 
-navigation.rviz
+* navigation.rviz
 
 ### Launch files
 
