@@ -25,7 +25,7 @@ ssh pi@(ip adress of turtlebot 1) (do this in two of the terminals)
 The IP adress of the turtlebot and the master IP adress might have to be changed inside
 the bashrc file inside the turtlebots.
 
-** launch the scripts to start and configure the turtlebots and the raspicam camera **
+**launch the scripts to start and configure the turtlebots and the raspicam camera**
 
 ROS_NAMESPACE=tb3_0 roslaunch turtlebot3_bringup adeyetb0.launch multi_robot_name:="tb3_0" set_lidar_frame_id:="tb3_0/base_scan"
 ROS_NAMESPACE=tb3_0 roslaunch turtlebot3_bringup turtlebot3_rpicamera.launch
@@ -34,7 +34,7 @@ ROS_NAMESPACE=tb3_1 roslaunch turtlebot3_bringup adeyetb1.launch multi_robot_nam
 ROS_NAMESPACE=tb3_1 roslaunch turtlebot3_bringup turtlebot3_rpicamera.launch
 
 
-** Launch the platooning package, object detection package, and the GNU-RADIO client script to interface ITS-G5 with ROS. **
+**Launch the platooning package, object detection package, and the GNU-RADIO client script to interface ITS-G5 with ROS.**
 
 Open up additionaly 3 terminals and in each terminal type:
 
