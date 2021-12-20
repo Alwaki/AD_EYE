@@ -15,7 +15,7 @@ put inside the respective turtlebot.
 
 On **each turtlebot** put the adeye_tbX.launch, where X is either 0 or 1 for respective turtlebot, file inside of this directory:
 
-/catkin_ws/src/......
+/catkin_ws/src/.../turtlebot3_bringup/launch
 
 Then on the RSU computer open up four terminals, two will be used for each turtlebot.
 
