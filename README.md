@@ -3,8 +3,8 @@ This respository includes a Platooning package, object detection package, system
 
 # Important comment on how to build the workspace
 
-To build the workspace type: cd catkin_ws in the terminal
-Then build the workspace with the following command: catkin_make -DCMAKE_BUILD_TYPE=Release
+* To build the workspace type: cd catkin_ws in the terminal
+* Then build the workspace with the following command: catkin_make -DCMAKE_BUILD_TYPE=Release
 
 # How to launch the whole system
 
@@ -18,7 +18,7 @@ On **each turtlebot** put the adeye_tbX.launch, where X is either 0 or 1 for res
 /catkin_ws/src/......
 
 Then on the RSU computer open up four terminals, two will be used for each turtlebot.
-** ssh into respective turtlebot **
+**ssh into respective turtlebot**
 ssh pi@(ip adress of turtlebot 0) (do this in two of the terminals)
 ssh pi@(ip adress of turtlebot 1) (do this in two of the terminals)
 
