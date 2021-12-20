@@ -56,24 +56,14 @@ TO BE ADDED!
 
 ### Services
 
-TO BE ADDED!
+* **`stop`** ([std_srvs/SetBool])
 
-* **`get_average`** ([std_srvs/Trigger])
+	Service used to be triggered by ITS-G5, will stop the turtlebots in the platoon.
 
-	Returns information about the current average. For example, you can trigger the computation from the console with
-
-		rosservice call /ros_package_template/get_average
-
+		
 
 ### Parameters
 
 TO BE ADDED!
 
-* **`subscriber_topic`** (string, default: "/temperature")
-
-	The name of the input topic.
-
-* **`cache_size`** (int, default: 200, min: 0, max: 1000)
-
-	The size of the cache.
 
