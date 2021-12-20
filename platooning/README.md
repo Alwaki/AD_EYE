@@ -44,10 +44,6 @@ navigation.rviz
 
 TO BE ADDED!
 
-* **`/temperature`** ([sensor_msgs/Temperature])
-
-	The temperature measurements from which the average is computed.
-
 
 ### Published Topics
 
