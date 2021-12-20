@@ -10,8 +10,6 @@ from darknet_ros_msgs.msg import BoundingBoxes
 from object_detection.msg import objectpixels
 from std_msgs.msg import String
 
-#Change name of the script to relative_detection_coordinates
-#Previously object_location_test
 
 """
 The RelativeCoordinates class retrieves bounding box information from the darknet ros package.
