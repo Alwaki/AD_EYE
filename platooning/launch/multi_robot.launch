@@ -2,53 +2,44 @@
 
 <launch>
 
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="$(find platooning)/worlds/empty.world"/>
-        <arg name="paused" value="false"/>
-        <arg name="use_sim_time" value="true"/>
-        <arg name="gui" value="true"/>
-        <arg name="headless" value="false"/>
-        <arg name="debug" value="false"/>
-    </include>  
-
     <!-- Run the map server -->
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find platooning)/maps/map7.yaml" >
-        <param name="frame_id" value="/map" />
-    </node> 
+   <node name="map_server" pkg="map_server" type="map_server" args="$(find platooning)/slam-maps/testmap.yaml" >
+   </node>
 
-    <!-- Start RVIZ -->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find platooning)/models/rviz/navigation.rviz" />
-
-    <include file="$(find platooning)/launch/single_robot.launch" >
-        <arg name="model"       default="waffle_pi" doc="model type [burger, waffle, waffle_pi]"/>
+    <!-- launch platooning algorithm/controllers for each turtlebot -->
+    <include file="$(find platooning)/launch/single_robot.launch">
         <arg name="tb3_id"      default="tb3_0"/>
         <arg name="leader_id"   default="vehicle"/>
-        <arg name="tb3_x"       default="0.0"/>
-        <arg name="tb3_y"       default="0.0"/>
-        <arg name="tb3_z"       default="0.0"/>
-        <arg name="tb3_yaw"     default="0.0"/>
     </include>
 
-
-    <include file="$(find platooning)/launch/single_robot.launch" >
-        <arg name="model"       default="waffle_pi" doc="model type [burger, waffle, waffle_pi]"/>
+   <include file="$(find platooning)/launch/single_robot.launch">
         <arg name="tb3_id"      default="tb3_1"/>
         <arg name="leader_id"   default="tb3_0"/>
-        <arg name="tb3_x"       default="-1.0"/>
-        <arg name="tb3_y"       default="0.0"/>
-        <arg name="tb3_z"       default="0.0"/>
-        <arg name="tb3_yaw"     default="0.0"/>
     </include>
-    
-    <include file="$(find platooning)/launch/single_robot.launch" >
-        <arg name="model"       default="waffle_pi" doc="model type [burger, waffle, waffle_pi]"/>
-        <arg name="tb3_id"      default="tb3_2"/>
-        <arg name="leader_id"   default="tb3_1"/>
-        <arg name="tb3_x"       default="-2.0"/>
-        <arg name="tb3_y"       default="0.0"/>
-        <arg name="tb3_z"       default="0.0"/>
-        <arg name="tb3_yaw"     default="0.0"/>
+
+    <!-- Launch gnuradio client -->
+    <!--<node pkg="platooning" name="gnuradio_client" type="gnuradio_client.py" output="screen">
+    </node>-->
+
+    <!-- Launch object detection for each robot (darknet_ros/yolov3) -->
+    <!-- <include file="$(find object_detection)/launch/object_detection_main.launch">
+    </include> -->
+
+    <!-- Launch script to show the Prescan vehicle trajectory in Rviz -->
+    <node pkg="object_detection" name="prescan_marker" type="marker_prescan.py" output="screen">
+    </node>
+
+    <!-- AMCL launch for each turtlebot -->
+    <include file="$(find platooning)/launch/amcl_tb3_0.launch">
+      <arg name="initial_pose_x"  default="0.5"/>
+      <arg name="initial_pose_y"  default="0"/>
     </include>
-    
-    
+
+    <include file="$(find platooning)/launch/amcl_tb3_1.launch">
+      <arg name="initial_pose_x"  default="0"/>
+      <arg name="initial_pose_y"  default="0"/>
+    </include>
+
+    <!-- Start RVIZ -->
+   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find platooning)/rviz_config/navigation.rviz" />
 </launch>

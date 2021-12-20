@@ -1,8 +1,0 @@
-
-<launch>
-
-    <node pkg="robot_localization" type="ukf_localization_node" name="ukf_filter" clear_params="true">
-        <rosparam command="load" file="$(find platooning)/config/sensor_filter.yaml" />
-    </node>
-
-</launch>

@@ -1,0 +1,43 @@
+<launch>
+    <arg name="tb3_id"/>
+   
+    <!-- Launch darknet ros with namespace -->
+    <include file="$(find darknet_ros)/launch/yolo_v3.launch">
+	      <arg name="network_param_file"  value="$(find darknet_ros)/config/yolov3.yaml"/>
+        <arg name="image" value="$(arg tb3_id)/raspicam_node/image"/>
+        <arg name="tb3_id" value="$(arg tb3_id)"/>   
+    </include>
+
+   <group ns = "$(arg tb3_id)">
+                                                                                                                       
+      <node name="republish" type="republish" pkg="image_transport" output="screen" args="compressed in:=/$(arg tb3_id)/raspicam_node/image raw out:=/$(arg tb3_id)/raspicam_node/image"/>
+
+      <!-- Launch the nodes used for object detection -->
+      <node pkg="object_detection" name="relative_detection_coordinates" type="relative_detection_coordinates.py" output="screen">
+          <remap from="/scan" to="/$(arg tb3_id)/scan"/>
+          <remap from="/darknet_ros/bounding_boxes" to="/$(arg tb3_id)/darknet_ros/bounding_boxes"/>
+          <remap from="/Relative_coordinates_info" to="/$(arg tb3_id)/Relative_coordinates_info"/>
+      </node>
+    
+      <node pkg="object_detection" name="detection_tag_frame" type="detection_tag_frame.py" output="screen">  
+         <remap from="/Relative_coordinates_info" to="/$(arg tb3_id)/Relative_coordinates_info"/>
+         <remap from="/base_scan" to="/$(arg tb3_id)/base_scan"/>
+         <param name="header" type="string" value="$(arg tb3_id)/base_scan"/>
+         <param name="detection_tag_transform" type="string" value="detecttag_$(arg tb3_id)"/>
+      </node>
+    
+      <node pkg="object_detection" name="global_detection_coordinates" type="global_detection_coordinates.py" output="screen">  
+         <remap from="/Global_coordinates_info" to="/$(arg tb3_id)/Global_coordinates_info"/>
+         <remap from="/Relative_coordinates_info" to="/$(arg tb3_id)/Relative_coordinates_info"/>
+         <param name="detect_tag" type="string" value="detecttag_$(arg tb3_id)"/>
+         <param name="robot_odom" type="string" value="/$(arg tb3_id)/odom"/>
+      </node>
+
+      <node pkg="object_detection" name="detection_visualization" type="marker_coordinates.py" output="screen">
+          <remap from="/Global_coordinates_info" to="/$(arg tb3_id)/Global_coordinates_info"/> 
+      </node>
+
+  </group>
+
+ 
+</launch>
